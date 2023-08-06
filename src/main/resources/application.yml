@@ -1,0 +1,47 @@
+server:
+  port: 8200
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:development}
+  application:
+    name: fileupload
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  flyway:
+    ignore-missing-migrations: true
+    out-of-order: true
+  main:
+    allow-circular-references: true
+
+management:
+  endpoints:
+    web:
+      base-path: /fileupload/monitor
+      exposure:
+        include: health
+      health:
+        show-details: always
+---
+spring:
+  config:
+    activate:
+      on-profile: development
+  datasource:
+    url : jdbc:postgresql://localhost:5432/fileupload_db
+    username : 'adarshawasthi'
+    password : ''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
